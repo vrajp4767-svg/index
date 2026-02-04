@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Valentine ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            background-color: #ffe6e9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            z-index: 10;
+            border: 2px solid #fff0f3;
+        }
+
+        h1 {
+            color: #d63384;
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+        }
+
+        /* Button Styling */
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            position: relative;
+            min-height: 60px;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 12px 35px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        #yesBtn {
+            background-color: #ff4d6d;
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
+        }
+
+        #yesBtn:hover {
+            transform: translateY(-2px);
+            background-color: #d90429;
+            box-shadow: 0 6px 20px rgba(255, 77, 109, 0.6);
+        }
+
+        #noBtn {
+            background-color: #e9ecef;
+            color: #495057;
+            position: absolute;
+            left: 55%; 
+        }
+
+        /* Emotional Message Styling */
+        #loveMessage {
+            display: none;
+        }
+
+        .message-content {
+            text-align: left;
+            line-height: 1.8;
+            color: #4a4a4a;
+        }
+
+        .message-content p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .highlight {
+            color: #d63384;
+            font-weight: bold;
+        }
+
+        .signature {
+            text-align: right;
+            margin-top: 30px;
+            font-style: italic;
+            font-weight: bold;
+            color: #d63384;
+        }
+
+        .big-heart {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="questionContainer">
+        <div class="big-heart">🌹</div>
+        <h1>Will you be my Valentine?</h1>
+        <p style="color: #666; margin-bottom: 30px;">I have a question that I've been wanting to ask...</p>
+        
+        <div class="buttons">
+            <button id="yesBtn">Yes, absolutely!</button>
+            <button id="noBtn">No</button>
+        </div>
+    </div>
+
+    <div class="container" id="loveMessage">
+        <div class="big-heart">❤️</div>
+        <h1>You have my heart</h1>
+        
+        <div class="message-content">
+            <p>To my favorite person, krishna </p>
+            
+            <p>I honestly don't know what I would do without you. You are the reason I smile at my phone like an idiot, the first person I want to talk to when I wake up, and the last person I think about before I fall asleep.</p>
+            
+            <p>Thank you for being my peace in a chaotic world and for loving me the way you do. Every moment spent with you is my favorite memory.</p>
+            
+            <p class="highlight">I promise to always be by your side, to support you, and to love you more every single day.</p>
+            
+            <div class="signature">
+                Forever yours,<br>
+                HARCH  
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        const questionContainer = document.getElementById('questionContainer');
+        const loveMessage = document.getElementById('loveMessage');
+
+        // Function to move the 'No' button
+        function moveButton() {
+            const containerRect = questionContainer.getBoundingClientRect();
+            const btnRect = noBtn.getBoundingClientRect();
+
+            // Calculate max boundaries within the browser window
+            const maxX = window.innerWidth - btnRect.width - 20;
+            const maxY = window.innerHeight - btnRect.height - 20;
+
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+        }
+
+        // Trigger move on hover (desktop) and click (mobile)
+        noBtn.addEventListener('mouseenter', moveButton);
+        noBtn.addEventListener('click', moveButton);
+
+        // Show the letter when 'Yes' is clicked
+        yesBtn.addEventListener('click', () => {
+            questionContainer.style.display = 'none';
+            loveMessage.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
